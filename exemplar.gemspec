@@ -37,7 +37,8 @@ Gem::Specification.new do |s|
   s.test_files = [
     "test/example_test.rb",
      "test/runner_test.rb",
-     "test/test_helper.rb"
+     "test/test_helper.rb",
+     "examples/simple.rb"
   ]
 
   if s.respond_to? :specification_version then
