@@ -10,6 +10,10 @@ module Exemplar
       def before(*before_methods)
         before_callbacks.push *before_methods
       end
+
+      def examples
+        @examples ||= []
+      end
     end
 
     attr_reader :name, :block
@@ -17,7 +21,7 @@ module Exemplar
     def initialize(name, options, block)
       @name, @block = name, block
 
-      runner.register(self)
+      self.class.examples << self
     end
 
     def run

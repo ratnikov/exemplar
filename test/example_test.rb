@@ -2,16 +2,10 @@ require 'test_helper'
 
 module Exemplar
   class ExampleTest < Test::Unit::TestCase
-    setup
-    def setup_examples
-      # make sure there aren't any lingering examples declared
-      Runner.examples.clear
-    end
-
     def test_declaring_example
       test_example = example("test example") {  }
 
-      assert_equal [ test_example ], Runner.examples, "Should register the example with the runner"
+      assert_equal [ test_example ], Example.examples, "Should register the example with the runner"
     end
 
     def test_running_example
@@ -52,12 +46,6 @@ module Exemplar
       mock( example ).rescue_error(error).returns :rescue_return
 
       assert_equal :rescue_return, example.run, "should return whatever rescue returned"
-    end
-
-    teardown
-    def teardown_callbacks
-      # clear the callbacks to avoid future test breakage
-      Example.before_callbacks.clear
     end
   end
 end
