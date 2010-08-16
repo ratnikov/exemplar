@@ -21,12 +21,21 @@ module Exemplar
       options = {}
 
       OptionParser.new do |opt|
-        opt.on("-e", "--example [REGEX]", "Run examples matching the regex") do |regex|
+        opt.banner = "Exemplar automatic example runner.\n"
+        opt.banner << "Usage: #{$0} [options]"
+
+        opt.on
+        opt.on("-e", "--example [REGEX]", "Run examples matching the regex.") do |regex|
           options[:match] = Regexp.new(regex)
         end
+
+        opt.on_tail
       end.parse!(argv)
 
       options
+    rescue OptionParser::ParseError => e
+      puts "%s. Run `#{$0} --help` for help." % e
+      exit false
     end
   end
 end
