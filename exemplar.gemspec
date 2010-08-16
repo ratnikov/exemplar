@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION.yml",
+     "examples/algebra.rb",
      "exemplar.gemspec",
      "lib/exemplar.rb",
      "lib/exemplar/example.rb",
@@ -38,7 +39,7 @@ Gem::Specification.new do |s|
     "test/example_test.rb",
      "test/runner_test.rb",
      "test/test_helper.rb",
-     "examples/simple.rb"
+     "examples/algebra.rb"
   ]
 
   if s.respond_to? :specification_version then
