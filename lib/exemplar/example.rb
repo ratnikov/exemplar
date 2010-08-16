@@ -29,11 +29,15 @@ module Exemplar
 
       block_return
     rescue Exception => error
-      log "Whoops, seems like something went wrong. Here's the error message: %s." % error.message
-      nil
+      rescue_error(error)
     end
 
     private
+
+    def rescue_error(error)
+      log "Whoops, seems like something went wrong. Here's the error message: %s." % error.message
+      nil
+    end
 
     def run_before_callbacks
       self.class.before_callbacks.all? { |callback| send(callback) }

@@ -2,7 +2,8 @@ require 'test_helper'
 
 module Exemplar
   class ExampleTest < Test::Unit::TestCase
-    def setup
+    setup
+    def setup_examples
       # make sure there aren't any lingering examples declared
       Runner.examples.clear
     end
@@ -43,7 +44,18 @@ module Exemplar
       assert_equal false, example.run, "Should return that example failed to run"
     end
 
-    def teardown
+    def test_exception_handling
+      error = Exception.new "bad error"
+
+      example = example("erroring example") { raise error }
+
+      mock( example ).rescue_error(error).returns :rescue_return
+
+      assert_equal :rescue_return, example.run, "should return whatever rescue returned"
+    end
+
+    teardown
+    def teardown_callbacks
       # clear the callbacks to avoid future test breakage
       Example.before_callbacks.clear
     end
