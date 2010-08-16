@@ -1,6 +1,6 @@
 == Getting started
 
-<...pending...>
+See <tt>examples/algebra.rb</tt> for a simple example.
 
 == License and Copyright
 
