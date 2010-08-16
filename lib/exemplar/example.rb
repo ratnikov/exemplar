@@ -2,6 +2,16 @@ module Exemplar
   class Example
     include Loggable
 
+    class << self
+      def before_callbacks
+        @before_callbacks ||= []
+      end
+
+      def before(*before_methods)
+        before_callbacks.push *before_methods
+      end
+    end
+
     attr_reader :name, :block
 
     def initialize(name, options, block)
@@ -13,7 +23,7 @@ module Exemplar
     def run
       log "Running example #{name}..."
 
-      block_return = block.call(self)
+      block_return = run_before_callbacks && block.call(self)
 
       log "Done running example #{name}"
 
@@ -24,6 +34,10 @@ module Exemplar
     end
 
     private
+
+    def run_before_callbacks
+      self.class.before_callbacks.all? { |callback| send(callback) }
+    end
 
     def runner
       Exemplar::Runner
