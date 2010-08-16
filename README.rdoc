@@ -1,0 +1,7 @@
+== Getting started
+
+<...pending...>
+
+== License and Copyright
+
+All of the code is copyrighted by Google and is released under MIT license.
