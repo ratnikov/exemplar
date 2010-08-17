@@ -1,6 +1,24 @@
-== Getting started
+== An example
 
-See <tt>examples/algebra.rb</tt> for a simple example.
+  example "adding two numbers together" do
+    puts "1 + 5 = %s" % (1 + 5)
+  end
+
+  example "subtracting a number" do
+    puts "5 - 1 = %s" % (5 - 1 )
+  end
+
+This will produce:
+
+  Running example adding two numbers together...
+  1 + 5 = 6
+  Done running example adding two numbers together
+  Running example subtracting a number...
+  5 - 1 = 4
+  Done running example subtracting a number
+
+
+See <tt>examples/</tt> for more involved examples.
 
 == License and Copyright
 
