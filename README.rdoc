@@ -1,5 +1,7 @@
 == An example
 
+  require 'exemplar'
+
   example "adding two numbers together" do
     puts "1 + 5 = %s" % (1 + 5)
   end
