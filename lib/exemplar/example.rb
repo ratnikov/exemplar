@@ -16,10 +16,10 @@ module Exemplar
       end
     end
 
-    attr_reader :name, :block
+    attr_reader :name, :options, :block
 
     def initialize(name, options, block)
-      @name, @block = name, block
+      @name, @options, @block = name, options, block
 
       self.class.examples << self
     end

@@ -3,7 +3,10 @@ require 'test_helper'
 module Exemplar
   class ExampleTest < Test::Unit::TestCase
     def test_declaring_example
-      test_example = example("test example") {  }
+      test_example = example("test example", :foo => 'bar') {  }
+
+      assert_equal 'test example', test_example.name
+      assert_equal({ :foo => 'bar' }, test_example.options)
 
       assert_equal [ test_example ], Example.examples, "Should register the example with the runner"
     end
